@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@fontsource/nunito-sans/400.css";
 import "@fontsource/nunito-sans/600.css";
-import "@fontsource/nunito-sans/variable.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
