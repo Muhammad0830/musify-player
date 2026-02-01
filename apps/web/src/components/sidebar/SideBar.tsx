@@ -14,9 +14,7 @@ import {
 import SidebarItem from "./SidebarItem";
 import { cn } from "@/lib/utils";
 import LogoIcon from "./logoIcon";
-import { useTheme } from "next-themes";
 
-const project_name = "Musify";
 const animationDuration = 0.3;
 
 const sidebarItems = {
@@ -73,65 +71,88 @@ const sidebarItems = {
   ],
 };
 
-const SideBar = ({ open }: { open: boolean }) => {
-  const theme = useTheme();
-
+const SideBar = ({
+  open,
+  project_name,
+}: {
+  open: boolean;
+  project_name: string;
+}) => {
   return (
-    <motion.div
-      className="h-full flex flex-col bg-primary-background/30 backdrop-blur:md border-r border-r-foreground/10 overflow-hidden relative"
-      initial={{ width: 70 }}
-      animate={{ width: open ? 250 : 70 }}
-      transition={{ duration: animationDuration }}
-    >
-      <div
-        id="sidebar_logo"
-        className="w-full h-16 gap-2 border-b border-b-foreground/10 flex justify-center items-center"
+    <div>
+      <motion.div
+        className="h-full md:flex hidden flex-col bg-primary-background backdrop-blur:md border-r border-r-foreground/10 overflow-hidden relative"
+        initial={{ width: 70 }}
+        animate={{ width: open ? 250 : 70 }}
+        transition={{ duration: animationDuration }}
       >
-        <AnimatePresence mode="popLayout">
-          <motion.div layout="position" key="logo" className="">
-            <LogoIcon theme={theme.theme === "dark" ? "dark" : "light"} />
-          </motion.div>
-
-          {open && (
-            <motion.span
+        <div
+          id="sidebar_logo"
+          className="w-full h-16 gap-2 border-b border-b-foreground/10 flex justify-center items-center"
+        >
+          <AnimatePresence mode="popLayout">
+            <motion.div
               layout="position"
-              key="project_name"
-              initial={{ opacity: 0, x: 0 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.4 }}
-              className="md:text-3xl text-2xl"
+              key="logo"
+              className="text-black dark:text-white"
             >
-              {project_name}
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </div>
+              <LogoIcon />
+            </motion.div>
 
-      <div className="flex-1 flex flex-col justify-between">
-        <div className="flex flex-col">
-          <div className="p-2.5 flex flex-col gap-1">
-            {sidebarItems.main.map((item, index) => {
-              return (
-                <SidebarItem
-                  key={index}
-                  open={open}
-                  item={item}
-                  animationDuration={animationDuration}
-                />
-              );
-            })}
-          </div>
-
-          <div
-            className={cn(
-              "h-px bg-foreground/10 mx-auto transition-width duration-300",
-              open ? "w-9/10" : "w-4/5",
+            {open && (
+              <motion.span
+                layout="position"
+                key="project_name"
+                initial={{ opacity: 0, x: 0 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.4 }}
+                className="md:text-3xl text-2xl"
+              >
+                {project_name}
+              </motion.span>
             )}
-          />
+          </AnimatePresence>
+        </div>
+
+        <div className="flex-1 flex flex-col justify-between">
+          <div className="flex flex-col">
+            <div className="p-2.5 flex flex-col gap-1">
+              {sidebarItems.main.map((item, index) => {
+                return (
+                  <SidebarItem
+                    key={index}
+                    open={open}
+                    item={item}
+                    animationDuration={animationDuration}
+                  />
+                );
+              })}
+            </div>
+
+            <div
+              className={cn(
+                "h-px bg-foreground/10 mx-auto transition-width duration-300",
+                open ? "w-9/10" : "w-4/5",
+              )}
+            />
+
+            <div className="p-2.5 flex flex-col gap-1">
+              {sidebarItems.secondary.map((item, index) => {
+                return (
+                  <SidebarItem
+                    key={index}
+                    open={open}
+                    item={item}
+                    animationDuration={animationDuration}
+                  />
+                );
+              })}
+            </div>
+          </div>
 
           <div className="p-2.5 flex flex-col gap-1">
-            {sidebarItems.secondary.map((item, index) => {
+            {sidebarItems.bottom.map((item, index) => {
               return (
                 <SidebarItem
                   key={index}
@@ -143,21 +164,8 @@ const SideBar = ({ open }: { open: boolean }) => {
             })}
           </div>
         </div>
-
-        <div className="p-2.5 flex flex-col gap-1">
-          {sidebarItems.bottom.map((item, index) => {
-            return (
-              <SidebarItem
-                key={index}
-                open={open}
-                item={item}
-                animationDuration={animationDuration}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

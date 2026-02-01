@@ -1,3 +1,12 @@
 {
+    "header": {
+        "settings": "Settings",
+        "logout": "Logout",
+        "change theme": "Change theme",
+        "language": "Language",
+        "dark": "Dark mode",
+        "light": "Light mode",
+        "language switch": "Language switch"
+    },
     "Home": "Home"
 }
