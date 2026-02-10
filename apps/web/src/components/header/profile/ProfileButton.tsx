@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 import { ChevronDown, DoorOpen, Palette } from "lucide-react";
@@ -20,11 +20,12 @@ const dummyUserData = {
 };
 
 const ProfileButton = () => {
+  const [open, setOpen] = useState(false);
   const t = useTranslations("header");
 
   const userStartNameLetter = dummyUserData.name.split(" ")[0].charAt(0);
   return (
-    <DropdownMenu modal={false}>
+    <DropdownMenu modal={false} onOpenChange={setOpen} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
           className="cursor-pointer px-0.5 h-8.5 flex items-center border border-primary/20 rounded-full gap-1"
@@ -55,6 +56,7 @@ const ProfileButton = () => {
       >
         <Link href={"/profile"}>
           <Button
+            onClick={() => setOpen(false)}
             variant={"ghost"}
             className="w-full flex justify-start cursor-pointer bg-transparent h-auto border border-primary/10 px-1 py-1"
           >
@@ -83,12 +85,13 @@ const ProfileButton = () => {
         </Link>
 
         <div className="md:hidden flex flex-col gap-0.5">
-          <ThemeToggleProfile />
-          <LanguageSwitchModal />
+          <ThemeToggleProfile setOpen={setOpen} />
+          <LanguageSwitchModal setOpen={setOpen} />
         </div>
 
         <Link href={"/settings?tab=change_theme"}>
           <Button
+            onClick={() => setOpen(false)}
             variant={"ghost"}
             className="w-full flex justify-start cursor-pointer bg-transparent h-auto border border-primary/10"
           >
@@ -98,6 +101,7 @@ const ProfileButton = () => {
         </Link>
 
         <Button
+          onClick={() => setOpen(false)}
           variant={"ghost"}
           className="w-full px-2 py-2 text-start justify-start cursor-pointer text-sm bg-destructive/30 hover:bg-destructive dark:hover:bg-destructive"
         >
