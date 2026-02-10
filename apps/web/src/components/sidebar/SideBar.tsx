@@ -8,6 +8,7 @@ import {
   Library,
   Music,
   Search,
+  Settings,
   TrendingUp,
   User,
 } from "lucide-react";
@@ -52,14 +53,14 @@ const sidebarItems = {
       link: "/statistics",
     },
     {
-      label: "recently played",
-      icon: <Clock className="w-5! h-5!" />,
-      link: "/recently_played",
-    },
-    {
       label: "playlists",
       icon: <Music className="w-5! h-5!" />,
       link: "/playlists",
+    },
+    {
+      label: "settings",
+      icon: <Settings className="w-5! h-5!" />,
+      link: "/settings",
     },
   ],
   bottom: [

@@ -5,12 +5,19 @@ import { useTranslations } from "next-intl";
 import { Moon, Paintbrush2, Sun } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const ThemeToggleProfile = () => {
+const ThemeToggleProfile = ({
+  setOpen,
+}: {
+  setOpen: (open: boolean) => void;
+}) => {
   const t = useTranslations("header");
   const { theme, setTheme } = useTheme();
   return (
     <Button
-      onClick={() => setTheme((prev) => (prev === "light" ? "dark" : "light"))}
+      onClick={() => {
+        setTheme((prev) => (prev === "light" ? "dark" : "light"));
+        setOpen(false);
+      }}
       variant={"ghost"}
       className="w-full flex justify-between cursor-pointer bg-transparent h-auto border border-primary/10 px-3"
     >

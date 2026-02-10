@@ -10,7 +10,11 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { Globe } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const LanguageSwitchModal = () => {
+const LanguageSwitchModal = ({
+  setOpen,
+}: {
+  setOpen: (open: boolean) => void;
+}) => {
   const t = useTranslations("header");
   const pathname = usePathname();
 
@@ -19,6 +23,7 @@ const LanguageSwitchModal = () => {
       <Dialog>
         <DialogTrigger asChild>
           <Button
+            onClick={() => setOpen(false)}
             variant={"ghost"}
             className="w-full flex justify-start cursor-pointer bg-transparent h-auto border border-primary/10"
           >
