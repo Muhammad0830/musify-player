@@ -61,15 +61,15 @@ export function HomeControls({
                 {/* Sort Dropdown */}
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="w-[180px] h-10 justify-between">
+                        <Button variant="outline" className="sm:w-[180px] w-[150px] sm:text-sm text-xs h-10 justify-between">
                             {sortLabels[sortBy]}
                             <ChevronDown className="ml-2 h-4 w-4 opacity-50" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-[180px]">
+                    <DropdownMenuContent align="end" className="sm:w-[180px] w-[150px]">
                         {(Object.keys(sortLabels) as SortOption[]).map((option) => (
                             <DropdownMenuItem key={option} onClick={() => setSortBy(option)}>
-                                <span className={cn("flex-1", sortBy === option && "font-medium")}>{sortLabels[option]}</span>
+                                <span className={cn("flex-1  sm:text-sm text-xs", sortBy === option && "font-medium")}>{sortLabels[option]}</span>
                                 {sortBy === option && <Check className="ml-2 h-4 w-4" />}
                             </DropdownMenuItem>
                         ))}
