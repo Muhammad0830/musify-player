@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -53,7 +52,7 @@ export function HomeControls({
     };
 
     return (
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row gap-2 mb-6">
             <div className="flex-1 items-stretch">
                 <SearchInput value={searchQuery} onChange={setSearchQuery} />
             </div>

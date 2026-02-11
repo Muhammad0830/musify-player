@@ -31,7 +31,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-screen w-full flex">
       <SideBar project_name={project_name} open={openSideBar ?? false} />
-      <div className="flex flex-col w-full flex-1">
+      <div className="flex flex-col w-full overflow-hidden flex-1">
         <Header
           open={openSideBar ?? false}
           handleToggleSideBar={handleToggleSideBar}
