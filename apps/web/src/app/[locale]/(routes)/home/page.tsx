@@ -7,6 +7,7 @@ import { HomeFilters } from "../../../../components/home/HomeFilters";
 import { MusicCard } from "../../../../components/home/MusicCard";
 import { MusicListItem } from "../../../../components/home/MusicListItem";
 import { Music } from "@/types/music";
+import { AnimatePresence, motion } from "framer-motion"
 
 // Mock Data
 const MOCK_MUSIC: Music[] = [
@@ -179,6 +180,36 @@ export default function HomePage() {
         showFavorites={showFavorites}
         onToggleFavorites={() => setShowFavorites(!showFavorites)}
       />
+
+      <div className="mb-2 text-xl font-semibold mt-2">
+        <AnimatePresence mode="popLayout">
+          {selectedGenre ? (
+            <motion.h2
+              layout
+              key={selectedGenre}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-primary">{selectedGenre} </span>
+              <span>genre tracks</span>
+            </motion.h2>
+          ) : (
+            <motion.h2
+              layout
+              key="all-genres"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-primary">All </span>
+              <span>genre tracks</span>
+            </motion.h2>
+          )}
+        </AnimatePresence>
+      </div>
 
       <div className={viewMode === "grid"
         ? "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
