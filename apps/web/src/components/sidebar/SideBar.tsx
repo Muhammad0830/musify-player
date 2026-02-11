@@ -1,13 +1,10 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Clock,
   Compass,
   Heart,
   Home,
   Library,
-  Music,
-  Search,
   Settings,
   TrendingUp,
   User,
@@ -24,11 +21,6 @@ const sidebarItems = {
       label: "home",
       icon: <Home className="w-5! h-5!" />,
       link: "/home",
-    },
-    {
-      label: "search",
-      icon: <Search className="w-5! h-5!" />,
-      link: "/search",
     },
     {
       label: "explore",
@@ -51,11 +43,6 @@ const sidebarItems = {
       label: "statistics",
       icon: <TrendingUp className="w-5! h-5!" />,
       link: "/statistics",
-    },
-    {
-      label: "playlists",
-      icon: <Music className="w-5! h-5!" />,
-      link: "/playlists",
     },
     {
       label: "settings",
